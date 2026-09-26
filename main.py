@@ -16,9 +16,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 load_dotenv()
 
 # ── paths ────────────────────────────────────────────────────────────────
-ROOT = Path(__file__).parent.parent
-MODEL_DIR = Path(os.getenv("SAFEFACTORY_MODEL_DIR", ROOT / "backend_analysis/SafeFactory/Model"))
-DATA_DIR = Path(os.getenv("SAFEFACTORY_DATA_DIR", ROOT / "backend_analysis/SafeFactory/data"))
+ROOT = Path(__file__).resolve().parent
+MODEL_DIR = Path(os.getenv("SAFEFACTORY_MODEL_DIR", ROOT / "Model"))
+DATA_DIR = Path(os.getenv("SAFEFACTORY_DATA_DIR", ROOT / "data"))
 
 # ── load models + knowledge base ─────────────────────────────────────────
 binary_pkg = joblib.load(MODEL_DIR / "binary_failure_model.pkl")

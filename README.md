@@ -12,9 +12,9 @@ A predictive-maintenance API for industrial machines. Combines trained ML models
 
 ```
 SafeFactory/
-├── python_server/
-│   ├── main.py           # FastAPI app — all endpoints live here
-│   └── .env              # OPENAI_API_KEY (not committed)
+├── main.py               # FastAPI app
+├── rag.py                # Command-line knowledge-base assistant
+├── .env                  # Optional OPENAI_API_KEY (not committed)
 ├── data/
 │   └── failure_knowledge_base.csv   # KB used for retrieval
 ├── Model/
@@ -29,10 +29,10 @@ SafeFactory/
 
 1. Install dependencies:
    ```bash
-   pip install fastapi uvicorn pandas scikit-learn joblib python-dotenv openai
+   pip install fastapi uvicorn pandas scikit-learn xgboost joblib python-dotenv openai
    ```
 
-2. Create a `.env` file inside `python_server/`:
+2. Optionally create a `.env` file in the project root:
    ```
    OPENAI_API_KEY=your_key_here
    ```
@@ -40,7 +40,6 @@ SafeFactory/
 
 3. Run the server:
    ```bash
-   cd python_server
    python main.py
    ```
    or
@@ -52,6 +51,8 @@ SafeFactory/
    ```
    http://127.0.0.1:8000/docs
    ```
+
+To ask questions in the terminal using the knowledge base, run `python rag.py` from the project root. Enter `q` to exit. Without an API key, the assistant returns the closest matching entry and its recommendations.
 
 ## API endpoints
 
